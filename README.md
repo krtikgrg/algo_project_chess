@@ -1,4 +1,8 @@
 # algo_project_chess
+
+Google doc link for the daily diary(the link is restricted ans is visible only to collaborators, if want access then contact any of the collaborator
+-> https://docs.google.com/document/d/1e_U1P_yeeEQsMpo6ZEvXy0kqpyQ5rOXZ-2xrl4M_IZA/edit?usp=sharing 
+
 This is part of our algorithms course project
 
 Tentative timeline of the project
