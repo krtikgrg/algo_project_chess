@@ -1,6 +1,6 @@
 In this folder we will upload all the material related to quantum chess.
 We will be uploading ppts , diagrams and documentation related to quatum chess here.
-
+We decided to try to implement two kinds of quantum chess firstly , chess where there is uncertainity in the pieces and secondly chess where there is is uncertainity in the position of pieces.
 
 
 References that we have used till now to learn about quantum chess are:-
