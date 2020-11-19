@@ -10,7 +10,7 @@ import java.util.Scanner;
 import javax.swing.JOptionPane;
 public class UserInterface extends JPanel implements MouseListener, MouseMotionListener{
 
-	static int oldMouseX,oldMouseY,newMouseX, newMouseY , isdice=0 , isroll = 0;
+	static int oldMouseX,oldMouseY,newMouseX, newMouseY , isdice=0 ,pausex =0 ,pausey=0 , isroll = 0 , isdef = 0, level = 0;
 
 	static int menu = 0;
 	static int squareSize=63;
@@ -74,7 +74,9 @@ public class UserInterface extends JPanel implements MouseListener, MouseMotionL
 	    if(x!=-1 && y!=-1)
 	    	g.drawImage(chessPiecesImage, (i+3)*squareSize, (8)*squareSize, (i+4)*squareSize, (9)*squareSize, x*64, y*64, (x+1)*64, (y+1)*64, this);	    	
         }
-    		
+    	}
+    	else
+    	{	
     		
         
       /*  switch (AlphaBetaChess.chessBoard[oldMouseX][oldMouseY]) {
@@ -136,7 +138,77 @@ public class UserInterface extends JPanel implements MouseListener, MouseMotionL
 	    if(x!=-1 && y!=-1)
 	    	g.drawImage(chessPiecesImage, (i%8)*squareSize, (i/8)*squareSize, (i%8+1)*squareSize, (i/8+1)*squareSize, x*64, y*64, (x+1)*64, (y+1)*64, this);	    	
         }
+    	if(isdef==1)
+    	{
+    		g.setColor(new Color(255,255,0));
+    			g.fillRect(0*squareSize , 8*squareSize , squareSize,squareSize);
+    			g.setColor(new Color(255,0,0));
+    			g.drawString("Back" , 12, 530);
     	}
+    	}
+    	
+	}
+
+	else if(isdef == 1)
+	{
+		if(menu==0)
+		{
+			super.paintComponent(g);
+			this.addMouseListener(this);
+        	this.addMouseMotionListener(this);
+        	g.setColor(new Color(255,200,100));
+			g.fillRect(0*squareSize, 0*squareSize, 8*squareSize, 9*squareSize);
+
+			g.setColor(new Color(128,0,0));
+			g.fillRect(1*squareSize, 0*squareSize, 2*squareSize, 2*squareSize);
+			g.setColor(new Color(255,255,255));
+			g.drawString("LEVEL-1",105,1*squareSize);
+
+			g.setColor(new Color(0,128,0));
+			g.fillRect(3*squareSize, 0*squareSize, 2*squareSize, 2*squareSize);
+			g.setColor(new Color(255,255,255));
+			g.drawString("LEVEL-2",3*squareSize+42,1*squareSize);
+
+			g.setColor(new Color(0,0,128));
+			g.fillRect(5*squareSize, 0*squareSize, 2*squareSize, 2*squareSize);
+			g.setColor(new Color(255,255,255));
+			g.drawString("LEVEL-3",5*squareSize+42,1*squareSize);
+
+			g.setColor(new Color(128,0,0));
+			g.fillRect(1*squareSize, 2*squareSize+30, 2*squareSize, 2*squareSize);
+			g.setColor(new Color(255,255,255));
+			g.drawString("LEVEL-4",105,2*squareSize+90);
+
+			g.setColor(new Color(0,128,0));
+			g.fillRect(3*squareSize, 2*squareSize+30, 2*squareSize, 2*squareSize);
+			g.setColor(new Color(255,255,255));
+			g.drawString("LEVEL-5",3*squareSize+42,2*squareSize+90);
+
+			g.setColor(new Color(0,0,128));
+			g.fillRect(5*squareSize, 2*squareSize+30, 2*squareSize, 2*squareSize);
+			g.setColor(new Color(255,255,255));
+			g.drawString("LEVEL-6",5*squareSize+42,2*squareSize+90);
+
+			g.setColor(new Color(128,0,0));
+			g.fillRect(1*squareSize, 4*squareSize+60, 2*squareSize, 2*squareSize);
+			g.setColor(new Color(255,255,255));
+			g.drawString("LEVEL-7",105,4*squareSize+120);
+
+			g.setColor(new Color(0,128,0));
+			g.fillRect(3*squareSize, 4*squareSize+60, 2*squareSize, 2*squareSize);
+			g.setColor(new Color(255,255,255));
+			g.drawString("LEVEL-8",3*squareSize+42,4*squareSize+120);
+
+			g.setColor(new Color(0,0,128));
+			g.fillRect(5*squareSize, 4*squareSize+60, 2*squareSize, 2*squareSize);
+			g.setColor(new Color(255,255,255));
+			g.drawString("LEVEL-9",5*squareSize+42,4*squareSize+120);
+
+			g.setColor(new Color(128,128,0));
+			g.fillRect(3*squareSize, 6*squareSize+90, 2*squareSize, 2*squareSize);
+			g.setColor(new Color(255,255,255));
+			g.drawString("LEVEL-10",3*squareSize+42,6*squareSize+150);
+		}
 	}
     	
     	else
@@ -191,7 +263,7 @@ public class UserInterface extends JPanel implements MouseListener, MouseMotionL
 			oldMouseX=e.getX()/squareSize;
 			oldMouseY=e.getY()/squareSize;
 		}
-		else if(isroll ==0 && e.getX()<8*squareSize && e.getY()>=8*squareSize && e.getY()<9*squareSize)
+		else if(isroll ==0 && e.getX()<8*squareSize && e.getY()>=8*squareSize && e.getY()<9*squareSize && isdice==1)
 		{
 			String yo="";
 
@@ -204,6 +276,218 @@ public class UserInterface extends JPanel implements MouseListener, MouseMotionL
 			else
 				isroll = 1;
 		}
+		else if(e.getX()<8*squareSize && e.getY()>=8*squareSize && e.getY()<9*squareSize && isdef==1)
+		{
+			menu=0;
+			AlphaBetaChess.kingPositionA = 0;
+				AlphaBetaChess.kingPositiona = 0;
+				AlphaBetaChess.movecount = 0;
+			repaint();
+		}
+		}
+		else if(isdef == 1 && pausex!=e.getX() && pausey!=e.getY())
+		{
+			int a = e.getX() , s = e.getY();
+			if(s>=0 && s<2*squareSize)
+			{
+				if(a>=1*squareSize && a<3*squareSize)
+				{
+					String chessBoard2[][] = {
+												{"r"," "," ","q","b"," ","r","a"},
+	       										{"p","p","b"," "," ","p"," ","p"},
+	        									{" "," ","k"," ","p","P","p"," "},
+										        {"B"," "," "," ","K"," "," "," "},
+										        {" "," ","B"," ","P"," "," ","Q"},
+										        {" "," ","P"," "," ","R"," "," "},
+										        {" ","P"," "," "," "," ","P","P"},
+										        {" "," "," "," "," "," "," ","A"}
+										     };
+					for(int i=0;i<64;i++)
+						AlphaBetaChess.chessBoard[i/8][i%8] = chessBoard2[i/8][i%8];
+					while(!"A".equals(AlphaBetaChess.chessBoard[AlphaBetaChess.kingPositionA/8][AlphaBetaChess.kingPositionA%8]))	AlphaBetaChess.kingPositionA++;
+				while(!"a".equals(AlphaBetaChess.chessBoard[AlphaBetaChess.kingPositiona/8][AlphaBetaChess.kingPositiona%8]))	AlphaBetaChess.kingPositiona++;
+					menu = 1;
+					repaint();
+				}
+				else if(a>=3*squareSize && a<5*squareSize)
+				{
+					String chessBoard2[][] = {
+												{" "," "," "," "," "," "," "," "},
+	       										{" "," "," "," "," "," "," "," "},
+	        									{" "," "," "," "," "," ","p"," "},
+										        {" "," "," "," "," "," "," ","a"},
+										        {" "," "," ","r"," "," ","K","P"},
+										        {"B"," "," "," "," "," ","P","A"},
+										        {" "," ","b","r"," ","R"," "," "},
+										        {" "," "," "," "," "," "," "," "}
+										    };
+					for(int i=0;i<64;i++)
+						AlphaBetaChess.chessBoard[i/8][i%8] = chessBoard2[i/8][i%8];	
+					while(!"A".equals(AlphaBetaChess.chessBoard[AlphaBetaChess.kingPositionA/8][AlphaBetaChess.kingPositionA%8]))	AlphaBetaChess.kingPositionA++;
+				while(!"a".equals(AlphaBetaChess.chessBoard[AlphaBetaChess.kingPositiona/8][AlphaBetaChess.kingPositiona%8]))	AlphaBetaChess.kingPositiona++;
+						menu = 1;
+					repaint();					 
+				}
+				else if(a>=5*squareSize && a<7*squareSize)
+				{
+					String chessBoard2[][] = {
+												{" "," "," ","q"," ","r","a"," "},
+	       										{"p","p","p"," ","k","b"," ","p"},
+	        									{" "," ","k"," ","B"," ","p"," "},
+										        {" "," "," ","P"," ","p"," "," "},
+										        {" "," ","P"," "," "," "," "," "},
+										        {" ","P","B"," "," ","K"," ","P"},
+										        {"P","Q"," "," "," ","P","P"," "},
+										        {" "," "," "," "," ","R","A"," "}
+										    };
+					for(int i=0;i<64;i++)
+						AlphaBetaChess.chessBoard[i/8][i%8] = chessBoard2[i/8][i%8];
+					while(!"A".equals(AlphaBetaChess.chessBoard[AlphaBetaChess.kingPositionA/8][AlphaBetaChess.kingPositionA%8]))	AlphaBetaChess.kingPositionA++;
+				while(!"a".equals(AlphaBetaChess.chessBoard[AlphaBetaChess.kingPositiona/8][AlphaBetaChess.kingPositiona%8]))	AlphaBetaChess.kingPositiona++;
+						menu = 1;
+					repaint();						 
+				}
+
+			}
+			else if(s>=2*squareSize+30 && s<4*squareSize+30)
+			{
+				if(a>=1*squareSize && a<3*squareSize)
+				{
+					String chessBoard2[][] = {
+												{"a"," "," "," "," "," "," "," "},
+	       										{" ","q"," "," "," "," "," "," "},
+	        									{" "," ","K"," "," "," "," "," "},
+										        {" "," ","K","K","K"," "," "," "},
+										        {" "," "," "," "," "," "," "," "},
+										        {" "," "," "," "," "," "," "," "},
+										        {" ","A"," "," "," "," "," ","R"},
+										        {" "," "," "," "," "," "," "," "}
+										     };
+					for(int i=0;i<64;i++)
+						AlphaBetaChess.chessBoard[i/8][i%8] = chessBoard2[i/8][i%8];
+					while(!"A".equals(AlphaBetaChess.chessBoard[AlphaBetaChess.kingPositionA/8][AlphaBetaChess.kingPositionA%8]))	AlphaBetaChess.kingPositionA++;
+				while(!"a".equals(AlphaBetaChess.chessBoard[AlphaBetaChess.kingPositiona/8][AlphaBetaChess.kingPositiona%8]))	AlphaBetaChess.kingPositiona++;
+					menu = 1;
+					repaint();
+				}
+				else if(a>=3*squareSize && a<5*squareSize)
+				{
+					String chessBoard2[][] = {
+												{" "," "," "," "," "," "," "," "},
+	       										{" "," "," "," "," "," "," "," "},
+	        									{" "," "," "," ","B"," "," "," "},
+										        {"R"," "," "," "," "," "," ","r"},
+										        {"p"," ","p"," ","p","r"," "," "},
+										        {" "," "," ","a","P"," "," "," "},
+										        {" "," "," ","P"," ","P"," "," "},
+										        {" "," "," ","A"," "," "," ","K"}
+										    };
+					for(int i=0;i<64;i++)
+						AlphaBetaChess.chessBoard[i/8][i%8] = chessBoard2[i/8][i%8];
+					while(!"A".equals(AlphaBetaChess.chessBoard[AlphaBetaChess.kingPositionA/8][AlphaBetaChess.kingPositionA%8]))	AlphaBetaChess.kingPositionA++;
+				while(!"a".equals(AlphaBetaChess.chessBoard[AlphaBetaChess.kingPositiona/8][AlphaBetaChess.kingPositiona%8]))	AlphaBetaChess.kingPositiona++;
+						menu = 1;
+					repaint();						 
+				}
+				else if(a>=5*squareSize && a<7*squareSize)
+				{
+					String chessBoard2[][] = {
+												{" "," ","a","q"," "," ","r"," "},
+	       										{"p"," "," "," "," "," "," "," "},
+	        									{" "," ","p"," "," "," "," "," "},
+										        {" ","p"," ","P"," "," "," "," "},
+										        {" ","A"," ","P"," ","p"," "," "},
+										        {" ","P","P"," "," ","R"," "," "},
+										        {"P"," "," ","R"," "," "," "," "},
+										        {" "," "," "," "," ","Q"," "," "}
+										    };
+					for(int i=0;i<64;i++)
+						AlphaBetaChess.chessBoard[i/8][i%8] = chessBoard2[i/8][i%8];
+					while(!"A".equals(AlphaBetaChess.chessBoard[AlphaBetaChess.kingPositionA/8][AlphaBetaChess.kingPositionA%8]))	AlphaBetaChess.kingPositionA++;
+				while(!"a".equals(AlphaBetaChess.chessBoard[AlphaBetaChess.kingPositiona/8][AlphaBetaChess.kingPositiona%8]))	AlphaBetaChess.kingPositiona++;
+						menu = 1;
+					repaint();						 
+				}
+			}
+			else if(s>=4*squareSize+60 && s<6*squareSize+60)
+			{
+				if(a>=1*squareSize && a<3*squareSize)
+				{
+					String chessBoard2[][] = {
+												{" "," ","R"," "," "," "," "," "},
+	       										{"a","p","b"," ","P"," ","P"," "},
+	        									{" ","p"," "," "," "," "," "," "},
+										        {" ","P"," "," "," "," "," "," "},
+										        {"A"," "," "," "," "," "," "," "},
+										        {" "," "," "," "," "," "," "," "},
+										        {" "," "," "," "," "," "," "," "},
+										        {" "," "," "," "," "," "," "," "}
+										     };
+					for(int i=0;i<64;i++)
+						AlphaBetaChess.chessBoard[i/8][i%8] = chessBoard2[i/8][i%8];
+					while(!"A".equals(AlphaBetaChess.chessBoard[AlphaBetaChess.kingPositionA/8][AlphaBetaChess.kingPositionA%8]))	AlphaBetaChess.kingPositionA++;
+				while(!"a".equals(AlphaBetaChess.chessBoard[AlphaBetaChess.kingPositiona/8][AlphaBetaChess.kingPositiona%8]))	AlphaBetaChess.kingPositiona++;
+					menu = 1;
+					repaint();
+				}
+				else if(a>=3*squareSize && a<5*squareSize)
+				{
+					String chessBoard2[][] = {
+												{" "," "," "," "," "," "," "," "},
+	       										{"p","a"," ","B"," "," "," "," "},
+	        									{"p"," "," "," "," "," "," "," "},
+										        {" "," ","A"," ","p"," "," "," "},
+										        {" "," "," "," "," "," "," "," "},
+										        {" "," "," "," "," "," "," "," "},
+										        {" "," "," "," ","Q"," "," "," "},
+										        {" "," "," "," "," "," "," "," "}
+										    };
+					for(int i=0;i<64;i++)
+						AlphaBetaChess.chessBoard[i/8][i%8] = chessBoard2[i/8][i%8];
+					while(!"A".equals(AlphaBetaChess.chessBoard[AlphaBetaChess.kingPositionA/8][AlphaBetaChess.kingPositionA%8]))	AlphaBetaChess.kingPositionA++;
+				while(!"a".equals(AlphaBetaChess.chessBoard[AlphaBetaChess.kingPositiona/8][AlphaBetaChess.kingPositiona%8]))	AlphaBetaChess.kingPositiona++;
+						menu = 1;
+					repaint();						 
+				}
+				else if(a>=5*squareSize && a<7*squareSize)
+				{
+					String chessBoard2[][] = {
+												{" ","q"," "," "," "," "," ","a"},
+	       										{" "," "," "," ","R"," "," "," "},
+	        									{" "," "," "," "," "," "," "," "},
+										        {" "," "," "," "," "," "," "," "},
+										        {" ","P"," "," "," "," "," "," "},
+										        {" ","B"," "," "," "," "," "," "},
+										        {" "," "," "," "," ","R"," "," "},
+										        {" ","A"," "," "," "," "," "," "}
+										    };
+					for(int i=0;i<64;i++)
+						AlphaBetaChess.chessBoard[i/8][i%8] = chessBoard2[i/8][i%8];
+					while(!"A".equals(AlphaBetaChess.chessBoard[AlphaBetaChess.kingPositionA/8][AlphaBetaChess.kingPositionA%8]))	AlphaBetaChess.kingPositionA++;
+				while(!"a".equals(AlphaBetaChess.chessBoard[AlphaBetaChess.kingPositiona/8][AlphaBetaChess.kingPositiona%8]))	AlphaBetaChess.kingPositiona++;
+						menu = 1;
+					repaint();						 
+				}
+			}
+			else if(s>=6*squareSize+60 && a>=3*squareSize && a<5*squareSize)
+			{
+				String chessBoard2[][] = {
+												{" "," "," "," ","r"," ","b"," "},
+	       										{" ","p"," "," "," "," ","B"," "},
+	        									{"p","K"," "," ","p","R"," "," "},
+										        {"R","B"," "," ","a"," "," "," "},
+										        {" ","P"," "," ","K"," "," ","p"},
+										        {" "," ","p"," "," "," ","b"," "},
+										        {"K"," "," ","P"," ","p"," ","r"},
+										        {" ","A"," "," "," ","A"," ","k"}
+										    };
+					for(int i=0;i<64;i++)
+						AlphaBetaChess.chessBoard[i/8][i%8] = chessBoard2[i/8][i%8];
+					menu = 1;
+					while(!"A".equals(AlphaBetaChess.chessBoard[AlphaBetaChess.kingPositionA/8][AlphaBetaChess.kingPositionA%8]))	AlphaBetaChess.kingPositionA++;
+				while(!"a".equals(AlphaBetaChess.chessBoard[AlphaBetaChess.kingPositiona/8][AlphaBetaChess.kingPositiona%8]))	AlphaBetaChess.kingPositiona++;
+					repaint();
+			}	
 		}
 		else
 		{
@@ -236,8 +520,12 @@ public class UserInterface extends JPanel implements MouseListener, MouseMotionL
 			else if(e.getY()>=3*squareSize && e.getY()<5*squareSize)
 			{
 				//give puzzles default;
-				menu = 1;
+				pausex= e.getX() ; pausey=e.getY();
+				isdef = 1;
+				AlphaBetaChess.kingPositionA = 0;
+				AlphaBetaChess.kingPositiona = 0;
 				repaint();
+				
 			}
 			else if(e.getY()>=6*squareSize && e.getY()<8*squareSize)
 			{
