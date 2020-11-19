@@ -20,6 +20,5 @@ Pawn = P
 
 Black Pieces:- same alphabets as used for white pieces but in lower case.
 
-Edit  - dice chess and normal chess will be also included in version only.
+Add restriction of number of moves for puzzles.
 
-leveled puzzles and dice chess are not included right now.
