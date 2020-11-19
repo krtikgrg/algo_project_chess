@@ -3,7 +3,7 @@ import javax.swing.JFrame;
 import javax.swing.JOptionPane;
 import java.util.Random;
 public class AlphaBetaChess {
-	
+	static int movecount = 0;
 	//array for representation of the chess board
 	/*
 	 * color=WHITE/black
