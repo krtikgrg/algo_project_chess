@@ -11,8 +11,7 @@ import javax.swing.JOptionPane;
 public class UserInterface extends JPanel implements MouseListener, MouseMotionListener{
 
 	static int oldMouseX,oldMouseY,newMouseX, newMouseY , isdice=0 ,pausex =0 ,pausey=0 , isroll = 0 , isdef = 0, level = 0;
-
-	static int menu = 0;
+		static int menu = 0;
 	static int squareSize=63;
 	public void paintComponent(Graphics g) {
 
@@ -602,9 +601,18 @@ public class UserInterface extends JPanel implements MouseListener, MouseMotionL
 				if(userPossibleMoves.replaceAll(move, "").length()<userPossibleMoves.length()){
 					AlphaBetaChess.makeMove(move);
 					AlphaBetaChess.flipBoard();
+					String moves = AlphaBetaChess.possibleMoves();
+					if(moves.length()>0)
+					{
 					AlphaBetaChess.makeMove(AlphaBetaChess.alphaBeta(AlphaBetaChess.globalDepth, Integer.MAX_VALUE, Integer.MIN_VALUE, "", 0));
 					AlphaBetaChess.flipBoard();
 					repaint();
+					}
+					else
+					{
+						System.out.println("Puzzle is solved, try another puzzle!");
+						
+					}
 				}
 			}
 			}
