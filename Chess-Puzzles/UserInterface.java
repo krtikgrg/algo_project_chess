@@ -511,7 +511,7 @@ public class UserInterface extends JPanel implements MouseListener, MouseMotionL
 										        {" ","P"," "," ","K"," "," ","p"},
 										        {" "," ","p"," "," "," ","b"," "},
 										        {"K"," "," ","P"," ","p"," ","r"},
-										        {" ","A"," "," "," ","A"," ","k"}
+										        {" "," "," "," "," ","A"," ","k"}
 										    };
 					for(int i=0;i<64;i++)
 						AlphaBetaChess.chessBoard[i/8][i%8] = chessBoard2[i/8][i%8];
