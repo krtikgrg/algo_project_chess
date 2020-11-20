@@ -74,6 +74,38 @@ public class UserInterface extends JPanel implements MouseListener, MouseMotionL
 	    if(x!=-1 && y!=-1)
 	    	g.drawImage(chessPiecesImage, (i+3)*squareSize, (8)*squareSize, (i+4)*squareSize, (9)*squareSize, x*64, y*64, (x+1)*64, (y+1)*64, this);	    	
         }
+        for(int i=0;i<64;i++){
+        	x=-1;
+        	y=-1;
+	    	 switch (AlphaBetaChess.chessBoard[i/8][i%8]) {
+	    	 case "P": x=5; y=0;
+             	 break;
+	         case "p": x=5; y=1;
+	             break;
+	         case "R": x=2; y=0;
+	             break;
+	         case "r": x=2; y=1;
+	             break;
+	         case "K": x=4; y=0;
+	             break;
+	         case "k": x=4; y=1;
+	             break;
+	         case "B": x=3; y=0;
+	             break;
+	         case "b": x=3; y=1;
+	             break;
+	         case "Q": x=1; y=0;
+	             break;
+	         case "q": x=1; y=1;
+	             break;
+	         case "A": x=0; y=0;
+	             break;
+	         case "a": x=0; y=1;
+	             break;
+	    	}
+	    if(x!=-1 && y!=-1)
+	    	g.drawImage(chessPiecesImage, (i%8)*squareSize, (i/8)*squareSize, (i%8+1)*squareSize, (i/8+1)*squareSize, x*64, y*64, (x+1)*64, (y+1)*64, this);	    	
+        }
     	}
     	else
     	{	
