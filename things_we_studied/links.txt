@@ -1,0 +1,31 @@
+https://towardsdatascience.com/game-ais-with-minimax-and-monte-carlo-tree-search-af2a177361b0
+
+https://quantumfrontiers.com/2016/02/15/quantum-chess/#:~:text=In%20quantum%20chess%2C%20players%20have,creates%20a%20superposition%20of%20boards
+
+https://vision.unipv.it/IA1/aa2009-2010/ProgrammingaComputerforPlayingChess.pdf
+
+https://www.uio.no/studier/emner/matnat/ifi/INF4130/h17/undervisningsmateriale/chess-algorithms-theory-and-practice_ver2017.pdf
+
+https://www.naftaliharris.com/blog/chess/#:~:text=The%20evaluation%20function%20takes%20as,and%20finds%20the%20best%20moves.
+
+https://www.chessprogramming.org/Simplified_Evaluation_Function
+
+https://www.chessprogramming.org/Evaluation
+
+https://www.cs.cornell.edu/boom/2004sp/ProjectArch/Chess/algorithms.html#:~:text=The%20core%20of%20the%20chess,max%20search%20of%20the%20gamespace.&text=(or%20%22ply%22%20as%20it's,leafs%20of%20the%20search%20tree.
+
+https://www.freecodecamp.org/news/simple-chess-ai-step-by-step-1d55a9266977/
+
+https://www.cs.dartmouth.edu/~devin/cs76/03_chess/chess.html
+
+helper repos:
+
+https://github.com/DipanshKhandelwal/Chess
+
+https://github.com/jcarolus/android-chess
+
+https://github.com/sashaouellet/Chess
+
+https://github.com/Quist/Chess
+
+we couldn't compile them all but we did to the extent we could
